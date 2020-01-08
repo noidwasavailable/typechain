@@ -1,13 +1,20 @@
-const name = "cSharp",
-	age = 24,
-	gender = "male";
-
-const sayHi = (name: string, gender: string, age: number): string => {
-	let honorific = "Default";
-	if (gender === "male") honorific = "Mr.";
-	if (gender === "female") honorific = "Ms.";
-	return `Hello ${honorific} ${name} of age ${age}`;
+interface Human {
+	name: string;
+	age: number;
+	gender: string;
+}
+const person = {
+	name: "cSharp",
+	age: 24,
+	gender: "male"
 };
 
-console.log(sayHi(name, gender, age));
+const sayHi = (person: Human): string => {
+	let honorific = "Default";
+	if (person.gender === "male") honorific = "Mr.";
+	if (person.gender === "female") honorific = "Ms.";
+	return `Hello ${honorific} ${person.name} of age ${person.age}`;
+};
+
+console.log(sayHi(person));
 export {};
