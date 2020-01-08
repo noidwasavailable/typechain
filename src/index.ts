@@ -1,24 +1,45 @@
-class Human {
-	public name: string;
-	public age: number;
-	public gender: string;
+import * as CryptoJS from "crypto-js";
 
-	constructor(name: string, age: number, gender: string) {
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
+class Blocc {
+	public index: number;
+	public hash: string;
+	public previousHash: string;
+	public data: string;
+	public timestamp: number;
+
+	static calculateBloccHash = (
+		index: number,
+		previousHash: string,
+		timestamp: number,
+		data: string
+	): string =>
+		CryptoJS.SHA256(index + previousHash + timestamp + data).toString();
+
+	constructor(
+		index: number,
+		hash: string,
+		previousHash: string,
+		data: string,
+		timestamp: number
+	) {
+		this.index = index;
+		this.hash = hash;
+		this.previousHash = previousHash;
+		this.data = data;
+		this.timestamp = timestamp;
 	}
 }
 
-const me = new Human("cSharp", 24, "male");
-const exile = new Human("necroRotom", 4, "female");
+const genesisBlocc: Blocc = new Blocc(0, "101", "", "Yeee Boi", 20200107);
 
-const sayHi = (person: Human): string => {
-	let honorific = "Default";
-	if (person.gender === "male") honorific = "Mr.";
-	if (person.gender === "female") honorific = "Ms.";
-	return `Hello ${honorific} ${person.name} of age ${person.age}`;
-};
+let bloccchain: Blocc[] = [genesisBlocc];
 
-console.log(sayHi(exile));
+const getBloccchain = (): Blocc[] => bloccchain;
+
+const getLatestBlocc = (): Blocc => bloccchain[bloccchain.length - 1];
+
+const getNewTimeStamp = (): number => Math.round(new Date().getTime() / 1000);
+
+console.log(getBloccchain());
+
 export {};
