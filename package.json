@@ -1,0 +1,13 @@
+{
+	"name": "typechain",
+	"version": "1.0.0",
+	"description": "Learning Typescript by making a blockchain through Nomad Coders",
+	"main": "index.js",
+	"repository": "https://github.com/noidwasavailable/typechain.git",
+	"author": "noidwasavailable <choi9601@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"start": "node index.js",
+		"prestart": "tsc"
+	}
+}
