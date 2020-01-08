@@ -1,13 +1,17 @@
-interface Human {
-	name: string;
-	age: number;
-	gender: string;
+class Human {
+	public name: string;
+	public age: number;
+	public gender: string;
+
+	constructor(name: string, age: number, gender: string) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+	}
 }
-const person = {
-	name: "cSharp",
-	age: 24,
-	gender: "male"
-};
+
+const me = new Human("cSharp", 24, "male");
+const exile = new Human("necroRotom", 4, "female");
 
 const sayHi = (person: Human): string => {
 	let honorific = "Default";
@@ -16,5 +20,5 @@ const sayHi = (person: Human): string => {
 	return `Hello ${honorific} ${person.name} of age ${person.age}`;
 };
 
-console.log(sayHi(person));
+console.log(sayHi(exile));
 export {};
